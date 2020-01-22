@@ -1,5 +1,6 @@
 import commonjs from '@rollup/plugin-commonjs';
 import nodeResolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import { resolve } from 'path';
 import serve from 'rollup-plugin-serve';
 import { terser } from 'rollup-plugin-terser';
@@ -18,7 +19,16 @@ const serveopts = {
   },
 };
 
-const plugins = [nodeResolve({}), commonjs(), typescript(), dev && serve(serveopts), !dev && terser()];
+const plugins = [
+  nodeResolve({}),
+  commonjs(),
+  typescript(),
+  replace({
+    'process.env.NODE_ENV': dev ? 'development' : 'production',
+  }),
+  dev && serve(serveopts),
+  !dev && terser(),
+];
 
 const getConfig = async () => {
   await writeTranslations(resolve(__dirname, 'src', 'localize', 'languages'));

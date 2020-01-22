@@ -24,7 +24,7 @@ const plugins = [
   commonjs(),
   typescript(),
   replace({
-    'process.env.NODE_ENV': dev ? 'development' : 'production',
+    'process.env.NODE_ENV': JSON.stringify(dev ? 'development' : 'production'),
   }),
   dev && serve(serveopts),
   !dev && terser(),

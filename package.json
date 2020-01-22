@@ -1,0 +1,32 @@
+{
+  "name": "hass-lovelace-components",
+  "version": "0.1.0",
+  "description": "Custom Lovelace cards",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "author": "Aleksander Heintz <alxandr@alxandr.me>",
+  "license": "MIT",
+  "dependencies": {
+    "@formatjs/intl-utils": "^2.1.0",
+    "custom-card-helpers": "^1.4.0",
+    "home-assistant-js-websocket": "^4.4.0",
+    "intl-messageformat": "^7.8.3",
+    "lit-element": "^2.2.1",
+    "lit-html": "^1.1.2"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^11.0.1",
+    "@rollup/plugin-node-resolve": "^7.0.0",
+    "globby": "^11.0.0",
+    "intl-messageformat-parser": "^3.6.3",
+    "js-yaml": "^3.13.1",
+    "lodash": "^4.17.15",
+    "prettier": "^1.19.1",
+    "rollup": "^1.29.1",
+    "rollup-plugin-serve": "^1.0.1",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-typescript2": "^0.25.3",
+    "typescript": "^3.7.5"
+  }
+}

@@ -4,18 +4,17 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Install node
-      uses: actions/setup-node@v1
-      with:
-        node-version: latest
-    - name: npm install & build
-      run: |
-        npm ci
-        npm run build
-      env:
-        CI: true
+      - uses: actions/checkout@v1
+      - name: Install node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '>=13.6.0'
+      - name: npm install & build
+        run: |
+          npm ci
+          npm run build
+        env:
+          CI: true

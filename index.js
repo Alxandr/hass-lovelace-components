@@ -187,7 +187,6 @@ found at http://polymer.github.io/PATENTS.txt
       <paper-icon-button aria-label="Turn off" icon="hass:power"></paper-icon-button>
     `:M``}static get styles(){return ee`
       :host {
-        @apply --paper-material-elevation-1;
         display: block;
         position: relative;
         font-size: 0px;

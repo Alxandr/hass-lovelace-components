@@ -3,6 +3,8 @@ import { CardConfig, names } from './const';
 import { HomeAssistant, LovelaceCardEditor, getLovelace, hasConfigOrEntityChanged } from 'custom-card-helpers';
 import { Strings, localize, localizeToString } from '../../localize';
 
+import { MediaPlayerStateObject } from '../../types';
+
 @customElement(names.tag)
 export class SimpleMediaControlCard extends LitElement {
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
@@ -14,6 +16,7 @@ export class SimpleMediaControlCard extends LitElement {
   }
 
   @property() public hass?: HomeAssistant;
+  @property() public stateObj?: MediaPlayerStateObject;
   @property() private _config?: CardConfig;
 
   public setConfig(config: CardConfig): void {
@@ -40,27 +43,19 @@ export class SimpleMediaControlCard extends LitElement {
       return html``;
     }
 
-    // TODO Check for stateObj or other necessary things and render a warning if missing
-    if (this._config.show_warning) {
-      return html`
-        <ha-card>
-          <div class="warning">${localize(Strings.ShowWarning)}</div>
-        </ha-card>
-      `;
-    }
-
     return html`
-      <ha-card>Test</ha-card>
+      <paper-icon-button aria-label="Turn off" icon="hass:power"></paper-icon-button>
     `;
   }
 
   static get styles(): CSSResult {
     return css`
-      .warning {
+      :host {
+        @apply --paper-material-elevation-1;
         display: block;
-        color: black;
-        background-color: #fce588;
-        padding: 8px;
+        position: relative;
+        font-size: 0px;
+        border-radius: 2px;
       }
     `;
   }

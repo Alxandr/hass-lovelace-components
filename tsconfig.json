@@ -5,6 +5,12 @@
     "moduleResolution": "node",
     "experimentalDecorators": true,
     "module": "esnext",
-    "importHelpers": true
+    "importHelpers": true,
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin",
+        "validate": false
+      }
+    ]
   }
 }

@@ -2,8 +2,7 @@ import { CSSResult, LitElement, TemplateResult, css, customElement, html, proper
 import { CardConfig, names } from './const';
 import { EditorTarget, EntitiesEditorEvent } from '../../types';
 import { HomeAssistant, LovelaceCardEditor, fireEvent } from 'custom-card-helpers';
-
-import { cardStruct } from '../../utils';
+import { cardStruct, loadLovelaceFile } from '../../utils';
 
 const cardConfigStruct = cardStruct({
   type: 'string',
@@ -27,6 +26,8 @@ export class SimpleMediaControlEditor extends LitElement implements LovelaceCard
     if (!this.hass) {
       return html``;
     }
+
+    loadLovelaceFile(this.hass, 'hui-entities-card-editor.js');
 
     return html`
       <div class="card-config">

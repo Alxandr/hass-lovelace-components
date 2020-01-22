@@ -51,7 +51,6 @@ export class SimpleMediaControlCard extends LitElement {
   static get styles(): CSSResult {
     return css`
       :host {
-        @apply --paper-material-elevation-1;
         display: block;
         position: relative;
         font-size: 0px;

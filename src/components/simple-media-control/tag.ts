@@ -1,10 +1,10 @@
 import { CSSResult, LitElement, PropertyValues, TemplateResult, css, customElement, html, property } from 'lit-element';
 import { CardConfig, names } from './const';
 import { HomeAssistant, LovelaceCardEditor, getLovelace, hasConfigOrEntityChanged } from 'custom-card-helpers';
+import { MediaPlayerStateObject, MediaPlayerStates } from '../../types';
 import { Strings, localize, localizeToString } from '../../localize';
 
 import { MediaPlayerEntity } from '../../entities/media-player';
-import { MediaPlayerStateObject } from '../../types';
 
 @customElement(names.tag)
 export class SimpleMediaControlCard extends LitElement {
@@ -51,7 +51,7 @@ export class SimpleMediaControlCard extends LitElement {
       return html``;
     }
 
-    const player = new MediaPlayerEntity(this.hass!, this.stateObj!);
+    const player = new MediaPlayerEntity(this.hass!, stateObj as MediaPlayerStateObject);
 
     return html`
       <paper-card class=${player.isOff ? 'off' : 'on'}>

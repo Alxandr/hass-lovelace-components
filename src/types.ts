@@ -30,6 +30,7 @@ export type MediaPlayerStates = 'off' | 'idle' | 'paused' | 'playing' | 'on';
 export interface MediaPlayerAttributes {}
 
 export interface StateObject<TState extends string, TAttributes = {}> {
+  entity_id: string;
   state: TState;
   attributes: TAttributes;
 }

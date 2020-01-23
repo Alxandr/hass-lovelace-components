@@ -19,8 +19,9 @@ export class SimpleMediaControlCard extends LitElement {
   }
 
   @property() public hass?: HomeAssistant;
-  @property() public stateObj?: MediaPlayerStateObject;
   @property() private _config?: CardConfig;
+
+  private _player?: MediaPlayerEntity;
 
   public setConfig(config: CardConfig): void {
     // TODO Check for required fields and that they are of the proper format
@@ -52,16 +53,25 @@ export class SimpleMediaControlCard extends LitElement {
     }
 
     const player = new MediaPlayerEntity(this.hass!, stateObj as MediaPlayerStateObject);
+    this._player = player;
 
     return html`
       <paper-card class=${player.isOff ? 'off' : 'on'}>
-        <paper-icon-button aria-label="Turn off" icon="hass:power"></paper-icon-button>
+        <paper-icon-button aria-label="Turn off" icon="hass:power" @click=${this._togglePower}></paper-icon-button>
       </paper-card>
     `;
   }
 
+  private _togglePower() {
+    this._player?.togglePower();
+  }
+
   static get styles(): CSSResult {
     return css`
+      paper-icon-button {
+        transition: color linear 0.5s;
+      }
+
       .on paper-icon-button {
         color: var(--label-badge-green);
       }

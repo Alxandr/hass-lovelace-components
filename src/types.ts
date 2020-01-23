@@ -27,7 +27,9 @@ export interface EditorTarget extends EventTarget {
 
 export type MediaPlayerStates = 'off' | 'idle' | 'paused' | 'playing' | 'on';
 
-export interface MediaPlayerAttributes {}
+export interface MediaPlayerAttributes {
+  is_volume_muted?: boolean;
+}
 
 export interface StateObject<TState extends string, TAttributes = {}> {
   entity_id: string;

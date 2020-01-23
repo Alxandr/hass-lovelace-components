@@ -5,6 +5,7 @@ import { MediaPlayerStateObject, MediaPlayerStates } from '../../types';
 import { Strings, localize, localizeToString } from '../../localize';
 
 import { MediaPlayerEntity } from '../../entities/media-player';
+import { classMap } from 'lit-html/directives/class-map';
 
 @customElement(names.tag)
 export class SimpleMediaControlCard extends LitElement {
@@ -49,17 +50,41 @@ export class SimpleMediaControlCard extends LitElement {
 
     const stateObj = this.hass!.states[this._config.entity];
     if (!stateObj) {
-      return html``;
+      return html`
+        <hui-warning>
+          ${this.hass.localize('ui.panel.lovelace.warning.entity_not_found', 'entity', this._config.entity)}
+        </hui-warning>
+      `;
     }
 
     const player = new MediaPlayerEntity(this.hass!, stateObj as MediaPlayerStateObject);
     this._player = player;
 
     return html`
-      <ha-card class=${player.isOff ? 'off' : 'on'}>
+      <ha-card
+        class=${classMap({
+          on: !player.isOff,
+          off: player.isOff,
+          muted: player.isMuted === true,
+        })}
+      >
         <div class="card-content">
           <div>
-            <paper-icon-button aria-label="Turn off" icon="hass:power" @click=${this._togglePower}></paper-icon-button>
+            <state-badge
+              class=${classMap({
+                pointer: true,
+              })}
+              .hass=${this.hass}
+              .stateObj=${stateObj}
+              .overrideIcon="hass:power"
+              @action=${this._togglePower}
+              tabindex="0"
+            ></state-badge>
+            <!--<paper-icon-button
+              aria-label=${player.isOff ? 'Turn on' : 'Turn off'}
+              icon="hass:power"
+              @click=${this._togglePower}
+            ></paper-icon-button>-->
           </div>
         </div>
       </ha-card>
@@ -72,15 +97,15 @@ export class SimpleMediaControlCard extends LitElement {
 
   static get styles(): CSSResult {
     return css`
-      paper-icon-button {
+      state-badge {
         transition: color linear 0.5s;
       }
 
-      .on paper-icon-button {
+      .on state-badge {
         color: var(--label-badge-green);
       }
 
-      .off paper-icon-button {
+      .off state-badge {
         color: var(--label-badge-grey);
       }
     `;

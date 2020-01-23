@@ -8,6 +8,10 @@ export class MediaPlayerEntity {
     return this.stateObj.state === 'off';
   }
 
+  get isMuted() {
+    return this.stateObj.attributes.is_volume_muted;
+  }
+
   togglePower() {
     if (this.isOff) {
       this.turnOn();

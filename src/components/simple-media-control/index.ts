@@ -1,2 +1,1 @@
 import './tag';
-import './editor';

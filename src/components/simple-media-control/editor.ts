@@ -1,8 +1,11 @@
+import '../../tags/yd-entity-picker';
+
 import { CSSResult, LitElement, TemplateResult, css, customElement, html, property } from 'lit-element';
 import { CardConfig, names } from './const';
 import { EditorTarget, EntitiesEditorEvent } from '../../types';
 import { HomeAssistant, LovelaceCardEditor, fireEvent } from 'custom-card-helpers';
-import { cardStruct, loadLovelaceFile } from '../../utils';
+
+import { cardStruct } from '../../utils';
 
 const cardConfigStruct = cardStruct({
   type: 'string',
@@ -15,6 +18,7 @@ export class SimpleMediaControlEditor extends LitElement implements LovelaceCard
   @property() private _config?: CardConfig;
 
   public setConfig(config: CardConfig): void {
+    config = cardConfigStruct(config);
     this._config = config;
   }
 
@@ -27,11 +31,9 @@ export class SimpleMediaControlEditor extends LitElement implements LovelaceCard
       return html``;
     }
 
-    loadLovelaceFile(this.hass, 'hui-entities-card-editor.js');
-
     return html`
       <div class="card-config">
-        <ha-entity-picker
+        <yd-entity-picker
           .label="${this.hass.localize('ui.panel.lovelace.editor.card.generic.entity')} (${this.hass.localize(
             'ui.panel.lovelace.editor.card.config.required',
           )})"
@@ -41,7 +43,7 @@ export class SimpleMediaControlEditor extends LitElement implements LovelaceCard
           include-domains='["media_player"]'
           @change="${this._valueChanged}"
           allow-custom-entity
-        ></ha-entity-picker>
+        ></yd-entity-picker>
       </div>
     `;
   }

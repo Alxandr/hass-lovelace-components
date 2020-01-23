@@ -9,11 +9,15 @@
   "license": "MIT",
   "dependencies": {
     "@formatjs/intl-utils": "^2.1.0",
+    "@polymer/paper-icon-button": "^3.0.2",
+    "@polymer/paper-input": "^3.2.0",
+    "@vaadin/vaadin-combo-box": "^5.0.9",
     "custom-card-helpers": "^1.4.0",
     "home-assistant-js-websocket": "^4.4.0",
     "intl-messageformat": "^7.8.3",
     "lit-element": "^2.2.1",
     "lit-html": "^1.1.2",
+    "memoize-one": "^5.1.1",
     "superstruct": "^0.8.3",
     "tslib": "^1.10.0"
   },

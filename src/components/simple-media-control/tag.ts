@@ -8,6 +8,7 @@ import { MediaPlayerStateObject } from '../../types';
 @customElement(names.tag)
 export class SimpleMediaControlCard extends LitElement {
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
+    await import('./editor');
     return document.createElement(names.editor) as LovelaceCardEditor;
   }
 

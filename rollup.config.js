@@ -38,7 +38,7 @@ const getConfig = async () => {
       input: 'src/index.ts',
       output: {
         dir: 'dist',
-        format: 'es',
+        format: 'esm',
       },
       plugins: [...plugins],
     },

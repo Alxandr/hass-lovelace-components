@@ -35,3 +35,11 @@ export interface StateObject<TState extends string, TAttributes = {}> {
 }
 
 export interface MediaPlayerStateObject extends StateObject<MediaPlayerStates, MediaPlayerAttributes> {}
+
+export interface PolymerChangedEvent<T> extends Event {
+  detail: {
+    value: T;
+    path?: string;
+    queueProperty: boolean;
+  };
+}

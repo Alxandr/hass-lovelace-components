@@ -3,6 +3,7 @@ import { CardConfig, names } from './const';
 import { HomeAssistant, LovelaceCardEditor, getLovelace, hasConfigOrEntityChanged } from 'custom-card-helpers';
 import { Strings, localize, localizeToString } from '../../localize';
 
+import { MediaPlayerEntity } from '../../entities/media-player';
 import { MediaPlayerStateObject } from '../../types';
 
 @customElement(names.tag)
@@ -45,19 +46,21 @@ export class SimpleMediaControlCard extends LitElement {
       return html``;
     }
 
+    const stateObj = this.hass!.states[this._config.entity];
+    if (!stateObj) {
+      return html``;
+    }
+
+    const player = new MediaPlayerEntity(this.hass!, this.stateObj!);
+
     return html`
-      <paper-icon-button aria-label="Turn off" icon="hass:power"></paper-icon-button>
+      <paper-card class=${player.isOff ? 'off' : 'on'}>
+        <paper-icon-button aria-label="Turn off" icon="hass:power"></paper-icon-button>
+      </paper-card>
     `;
   }
 
   static get styles(): CSSResult {
-    return css`
-      :host {
-        display: block;
-        position: relative;
-        font-size: 0px;
-        border-radius: 2px;
-      }
-    `;
+    return css``;
   }
 }

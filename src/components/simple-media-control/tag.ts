@@ -8,8 +8,9 @@ import { MediaPlayerStateObject } from '../../types';
 @customElement(names.tag)
 export class SimpleMediaControlCard extends LitElement {
   public static async getConfigElement(): Promise<LovelaceCardEditor> {
-    await import('./editor');
-    return document.createElement(names.editor) as LovelaceCardEditor;
+    await customElements.whenDefined('hui-media-control-card');
+    const HuiMediaControlCard = document.createElement('hui-media-control-card').constructor;
+    return await (HuiMediaControlCard as any).getConfigElement();
   }
 
   public static getStubConfig(): object {

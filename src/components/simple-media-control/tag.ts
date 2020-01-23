@@ -61,6 +61,14 @@ export class SimpleMediaControlCard extends LitElement {
   }
 
   static get styles(): CSSResult {
-    return css``;
+    return css`
+      .on paper-icon-button {
+        color: var(--label-badge-green);
+      }
+
+      .off paper-icon-button {
+        color: var(--label-badge-grey);
+      }
+    `;
   }
 }

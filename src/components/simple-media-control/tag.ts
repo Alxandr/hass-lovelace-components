@@ -76,7 +76,7 @@ export class SimpleMediaControlCard extends LitElement {
               })}
               .hass=${this.hass}
               .stateObj=${stateObj}
-              .overrideIcon="hass:power"
+              .overrideIcon=${'hass:power'}
               @action=${this._togglePower}
               tabindex="0"
             ></state-badge>

@@ -56,9 +56,13 @@ export class SimpleMediaControlCard extends LitElement {
     this._player = player;
 
     return html`
-      <paper-card class=${player.isOff ? 'off' : 'on'}>
-        <paper-icon-button aria-label="Turn off" icon="hass:power" @click=${this._togglePower}></paper-icon-button>
-      </paper-card>
+      <ha-card class=${player.isOff ? 'off' : 'on'}>
+        <div class="card-content">
+          <div>
+            <paper-icon-button aria-label="Turn off" icon="hass:power" @click=${this._togglePower}></paper-icon-button>
+          </div>
+        </div>
+      </ha-card>
     `;
   }
 

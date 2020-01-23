@@ -210,7 +210,7 @@ found at http://polymer.github.io/PATENTS.txt
               class=${Re({pointer:!0})}
               .hass=${this.hass}
               .stateObj=${t}
-              .overrideIcon="hass:power"
+              .overrideIcon=${"hass:power"}
               @action=${this._togglePower}
               tabindex="0"
             ></state-badge>

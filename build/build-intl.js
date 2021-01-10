@@ -20,7 +20,7 @@ async function* getTranslations(langDir) {
   for await (const { lang, file } of findTranslationFiles(langDir)) {
     const baseLang = new Intl.Locale(lang).language;
     const source = await fs.promises.readFile(file, { encoding: 'utf-8' });
-    const raw = yaml.safeLoad(source);
+    const raw = yaml.load(source);
     const values = [];
 
     for (const [key, mcu] of Object.entries(raw)) {

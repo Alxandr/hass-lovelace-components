@@ -23,7 +23,7 @@
     "@rollup/plugin-node-resolve": "11.2.0",
     "@rollup/plugin-replace": "2.4.1",
     "globby": "11.0.2",
-    "intl-messageformat-parser": "6.4.1",
+    "intl-messageformat-parser": "6.4.2",
     "js-yaml": "4.0.0",
     "lodash": "4.17.21",
     "prettier": "2.2.1",

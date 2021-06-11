@@ -16,7 +16,7 @@
     "lit-html": "1.4.1",
     "memoize-one": "5.2.1",
     "superstruct": "0.15.2",
-    "tslib": "2.2.0"
+    "tslib": "2.3.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "19.0.0",

@@ -9,7 +9,7 @@
   "license": "MIT",
   "dependencies": {
     "@formatjs/intl-utils": "3.8.4",
-    "custom-card-helpers": "1.7.0",
+    "custom-card-helpers": "1.7.1",
     "home-assistant-js-websocket": "5.10.0",
     "intl-messageformat": "9.6.18",
     "lit-element": "2.5.1",

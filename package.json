@@ -24,7 +24,7 @@
     "@rollup/plugin-replace": "3.0.0",
     "globby": "11.0.4",
     "intl-messageformat-parser": "6.4.4",
-    "js-yaml": "4.1.0",
+    "js-yaml": "4.1.1",
     "lodash": "4.17.21",
     "prettier": "2.4.1",
     "rollup": "2.56.3",
